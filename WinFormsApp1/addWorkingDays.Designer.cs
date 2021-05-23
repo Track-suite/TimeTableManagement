@@ -40,6 +40,7 @@ namespace WinFormsApp1
             this.Name = "addWorkingDays";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "addWorkingDays";
+            this.Load += new System.EventHandler(this.addWorkingDays_Load);
             this.ResumeLayout(false);
 
         }

@@ -14,5 +14,10 @@ namespace WinFormsApp1
         {
             InitializeComponent();
         }
+
+        private void addWorkingDays_Load(object sender, EventArgs e)
+        {
+            //home
+        }
     }
 }
