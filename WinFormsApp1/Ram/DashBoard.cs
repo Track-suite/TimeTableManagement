@@ -11,8 +11,17 @@ using System.Runtime.InteropServices;
 
 namespace WinFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class DashBoard : Form
     {
+
+
+        AddLectures a1 = null;
+        AddSubjects s1 = null;
+        AddSession f1 = null;
+
+
+
+        private bool isCollapsed;
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
          (
@@ -24,10 +33,28 @@ namespace WinFormsApp1
              int nHeightEllipse // width of ellipse
          );
 
-        public Form1()
+        public DashBoard()
         {
             InitializeComponent();
         }
+        public DashBoard(AddLectures a)
+        {
+            InitializeComponent();
+            this.a1 = a;
+        }
+        public DashBoard(AddSubjects s)
+        {
+            InitializeComponent();
+            this.s1 = s;
+        }
+
+        public DashBoard(AddSession f)
+        {
+            InitializeComponent();
+            this.f1 = f;
+        }
+
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -51,6 +78,13 @@ namespace WinFormsApp1
         {
             sidePanel.Height = button4.Height;
             sidePanel.Top = button4.Top;
+
+            if (s1 == null || s1.IsDisposed)
+            {
+                s1 = new AddSubjects();
+            }
+            s1.Show();
+            this.Hide();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -75,6 +109,14 @@ namespace WinFormsApp1
         {
             sidePanel.Height = button2.Height;
             sidePanel.Top = button2.Top;
+
+            if (a1 == null || a1.IsDisposed)
+            {
+                a1 = new AddLectures();
+            }
+            a1.Show();
+            this.Hide();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -87,12 +129,17 @@ namespace WinFormsApp1
         {
             sidePanel.Height = button8.Height;
             sidePanel.Top = button8.Top;
+            if (f1 == null || f1.IsDisposed)
+            {
+                f1 = new AddSession();
+            }
+            f1.Show();
+            this.Hide();
 
 
             if (panel2.Height == 140)
             {
-
-                panel2.Height = 46;
+                
 
             }
             else
@@ -104,7 +151,7 @@ namespace WinFormsApp1
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
-            
+
         }
 
         private void panel2_Paint_1(object sender, PaintEventArgs e)
@@ -124,8 +171,12 @@ namespace WinFormsApp1
 
         private void button6_Click(object sender, EventArgs e)
         {
-            sidePanel.Height = button6.Height;
-            sidePanel.Top = button6.Top;
+            if (a1 == null || a1.IsDisposed)
+            {
+                a1 = new AddLectures();
+            }
+            a1.Show();
+            this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -139,5 +190,11 @@ namespace WinFormsApp1
             sidePanel.Height = button9.Height;
             sidePanel.Top = button9.Top;
         }
+
+        private void button9_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
